@@ -9,7 +9,7 @@ MORSE_CODE = {'A': '.-',     'B': '-...',   'C': '-.-.', 'D': '-..',    'E': '.'
               }
 
 
-if __name__ == '__main__':
+def morse_code():
     text = open(sys.argv[1]).read()  # reading file
     final_message = ''
 
@@ -23,4 +23,9 @@ if __name__ == '__main__':
 
     final_message = final_message[:-1]  # removing last space
     print(final_message)
+
+
+if __name__ == '__main__':
+    morse_code()
+
 

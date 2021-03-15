@@ -1,16 +1,26 @@
-# This is a sample Python script.
+import sys
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# Morse code table, according to lab document
+MORSE_CODE = {'A': '.-',     'B': '-...',   'C': '-.-.', 'D': '-..',    'E': '.',      'F': '..-.',
+              'G': '--.',    'H': '....',   'I': '..', 'J': '.---',   'K': '-.-',    'L': '.-..',
+              'M': '--',     'N': '-.',     'O': '---', 'P': '.--.',   'Q': '--.-',   'R': '.-.',
+              'S': '...',    'T': '-',      'U': '..-', 'V': '...-',   'W': '.--',    'X': '-..-',
+              'Y': '-.--',   'Z': '--..'
+              }
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    text = open(sys.argv[1]).read()  # reading file
+    final_message = ''
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    for char in text:
+        if MORSE_CODE.get(char.upper()):  # adding the char from code table
+            final_message += MORSE_CODE[char.upper()] + ' '
+        elif char == ' ' and not final_message.endswith('/ '):  # swapping only one space in between chars
+            final_message += "/ "
+        elif char == '\n':  # preserving line  breaks
+            final_message += char
+
+    final_message = final_message[:-1]  # removing last space
+    print(final_message)
+

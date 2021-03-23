@@ -19,5 +19,4 @@ def bubble_sort(list_to_sort):
 
 if __name__ == '__main__':
     character_list = [ch for ch in open(sys.argv[1]).read()]
-    # word_list = open(sys.argv[1]).read().split() or with re.split if sorting words
-    bubble_sort(character_list)
+    print(bubble_sort(character_list))

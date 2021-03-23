@@ -1,7 +1,7 @@
 from unittest import TestCase
 from src import bubble_sort
 from src import quick_sort
-
+from src import merge_sort
 
 class Test(TestCase):
 
@@ -28,3 +28,9 @@ class Test(TestCase):
     def test_quick_sort_chars(self):
         data = ['z', '2', ',', ' ', 'o']
         self.assertListEqual(sorted(data), quick_sort.quick_sort(data, 0, len(data) - 1))
+
+    # Merge sorting tests
+
+    def test_merge_sort(self):
+        data = ['a', ',', 'K']
+        self.assertListEqual([',', 'K', 'a'], merge_sort.merge_sort(data, 0, len(data)))

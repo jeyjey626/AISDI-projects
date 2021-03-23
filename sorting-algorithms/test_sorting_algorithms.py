@@ -3,6 +3,7 @@ from src import bubble_sort
 from src import quick_sort
 from src import merge_sort
 
+
 class Test(TestCase):
 
     # Bubble sorting tests

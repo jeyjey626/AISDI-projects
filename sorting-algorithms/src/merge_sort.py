@@ -29,7 +29,6 @@ def merge(list_to_sort, start_idx, mid_idx, end_idx):
             list_to_sort[k] = R[j]
             j += 1
             k += 1
-        print(list_to_sort)
 
 
 def merge_sort(list_to_sort, start_idx,  end_idx):

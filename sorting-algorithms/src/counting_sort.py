@@ -1,10 +1,10 @@
 """
 Counting sort algorithm
-Counting table contain ASCII from 32 to 122
+Counting table contain ASCII from 10 to 122
 """
 import sys
 
-min_ascii = 32      # " "
+min_ascii = 10      # "\n"
 max_ascii = 122     # "z"
 
 

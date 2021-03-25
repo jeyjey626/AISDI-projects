@@ -29,7 +29,6 @@ def merge(list_to_sort, start_idx, mid_idx, end_idx):
             list_to_sort[k] = R[j]
             j += 1
             k += 1
-        print(list_to_sort)
 
 
 def merge_sort(list_to_sort, start_idx,  end_idx):
@@ -41,6 +40,10 @@ def merge_sort(list_to_sort, start_idx,  end_idx):
     return list_to_sort
 
 
+def sort(array):
+    return merge_sort(array, 0, len(array)-1)
+
+
 if __name__ == '__main__':
     str_line = [i for i in open(sys.argv[1]).read()]
-    sort_line = merge_sort(str_line, 0, len(str_line))
+    sort_line = sort(str_line)

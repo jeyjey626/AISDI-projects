@@ -46,4 +46,4 @@ def sort(array):
 
 if __name__ == '__main__':
     str_line = [i for i in open(sys.argv[1]).read()]
-    sort_line = merge_sort(str_line, 0, len(str_line))
+    sort_line = sort(str_line)

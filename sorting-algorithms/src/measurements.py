@@ -16,7 +16,7 @@ def plot(name, x, y):
 def measure_and_plot(array, function, title):
     x = []
     y = []
-    for i in range(1000, 6000, 1000):  # todo smaller steps?
+    for i in range(1000, len(array)-1, 1000):  # todo smaller steps?
         array_to_sort = array[0:i]
         t = timeit.Timer(lambda: function.sort(array_to_sort))
         x.append(i)
@@ -30,5 +30,4 @@ if __name__ == '__main__':
     f.close()
     measure_and_plot(data, bubble_sort, 'Sortowanie bąbelkowe')
     measure_and_plot(data, merge_sort, 'Sortowanie przez scalanie')
-    # measure_and_plot(data, quick_sort, 'Sortowanie szybkie')
-    # todo solve exceeded comparison dept - works in tests tho ? ? ?
+    measure_and_plot(data, quick_sort, 'Sortowanie szybkie')

@@ -23,9 +23,12 @@ def counting_sort(list_to_sort):
     return sorted_list
 
 
+def sort(array):
+    return counting_sort(array)
+
+
 if __name__ == '__main__':
     str_line = [i for i in open(sys.argv[1]).read()]
-    sort_line = counting_sort(str_line)
-    print(sort_line)
+    sort_line = sort(str_line)
 
 

@@ -13,10 +13,10 @@ class Test(TestCase):
         f.close()
 
     def test_quick_sort(self):
-        self.assertListEqual(self.sorted_data, quick_sort.quick_sort(self.data, 0, len(self.data)-1))
+        self.assertListEqual(self.sorted_data, quick_sort.sort(self.data))
 
     def test_bubble_sort(self):
         self.assertListEqual(self.sorted_data, bubble_sort.bubble_sort(self.data))
 
     def test_merge_sort(self):
-        self.assertListEqual(self.sorted_data, merge_sort.merge_sort(self.data, 0, len(self.data)))
+        self.assertListEqual(self.sorted_data, merge_sort.sort(self.data))

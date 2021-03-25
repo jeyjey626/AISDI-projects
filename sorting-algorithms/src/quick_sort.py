@@ -37,6 +37,10 @@ def quick_sort(array, start, end):
     return array
 
 
+def sort(array):
+    return quick_sort(array, 0, len(array)-1)
+
+
 if __name__ == '__main__':
     sort_array = [ch for ch in open(sys.argv[1]).read()]
     sort_array = quick_sort(sort_array, 0, len(sort_array)-1)

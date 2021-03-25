@@ -1,5 +1,5 @@
 from unittest import TestCase
-from src import quick_sort, bubble_sort, merge_sort
+from src import quick_sort, bubble_sort, merge_sort, counting_sort
 
 
 class Test(TestCase):
@@ -21,3 +21,6 @@ class Test(TestCase):
 
     def test_merge_sort(self):
         self.assertListEqual(self.sorted_data, merge_sort.sort(self.data))
+
+    def test_counting_sort(self):
+        self.assertListEqual(self.sorted_data, counting_sort.sort(self.data))

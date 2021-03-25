@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import bubble_sort
 import merge_sort
 import quick_sort
+import counting_sort
 
 
 # todo add setup to install automatically with pip ?
@@ -38,3 +39,4 @@ if __name__ == '__main__':
     measure_and_plot(data, bubble_sort, 'Sortowanie bąbelkowe', 'bubble_sort')
     measure_and_plot(data, merge_sort, 'Sortowanie przez scalanie', 'merge_sort')
     measure_and_plot(data, quick_sort, 'Sortowanie szybkie', 'quick_sort')
+    measure_and_plot(data, counting_sort, 'Sortowanie przez zliczanie', 'counting_sort')

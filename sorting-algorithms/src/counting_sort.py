@@ -1,6 +1,6 @@
 """
 Counting sort algorithm
-Counting table contain ASCII from 32 to 122
+Counting table contain ASCII from 10 to 122
 """
 import sys
 
@@ -8,7 +8,7 @@ min_ascii = 10      # "\n"
 max_ascii = 122     # "z"
 
 
-def counting_sort(list_to_sort):
+def sort(list_to_sort):
     sorted_list = []
     count_list = [0 for i in range(max_ascii-min_ascii+1)]
 
@@ -21,10 +21,6 @@ def counting_sort(list_to_sort):
             count_list[i] -= 1
 
     return sorted_list
-
-
-def sort(array):
-    return counting_sort(array)
 
 
 if __name__ == '__main__':

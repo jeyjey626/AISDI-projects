@@ -2,9 +2,12 @@
 
 # Function that partitions given list and sorts smaller elements to the left, bigger to the right of pivot point
 import sys
+import random
 
 
 def divide(array, start, end):
+    pivot_id = random.randint(start, end)  # randomizing pivot point
+    array[pivot_id], array[end] = array[end], array[pivot_id]
     pivot = array[end]
     i = (start - 1)  # last smaller element index
 
@@ -35,6 +38,10 @@ def quick_sort(array, start, end):
     quick_sort(array, divide_index+1, end)
 
     return array
+
+
+def sort(array):
+    return quick_sort(array, 0, len(array)-1)
 
 
 if __name__ == '__main__':

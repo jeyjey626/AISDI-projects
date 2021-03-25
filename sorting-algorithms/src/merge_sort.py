@@ -40,6 +40,10 @@ def merge_sort(list_to_sort, start_idx,  end_idx):
     return list_to_sort
 
 
+def sort(array):
+    return merge_sort(array, 0, len(array)-1)
+
+
 if __name__ == '__main__':
     str_line = [i for i in open(sys.argv[1]).read()]
     sort_line = merge_sort(str_line, 0, len(str_line))

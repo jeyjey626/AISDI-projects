@@ -26,6 +26,5 @@ def counting_sort(list_to_sort):
 if __name__ == '__main__':
     str_line = [i for i in open(sys.argv[1]).read()]
     sort_line = counting_sort(str_line)
-    print(sort_line)
 
 

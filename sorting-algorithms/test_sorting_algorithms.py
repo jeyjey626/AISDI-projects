@@ -10,7 +10,7 @@ class Test(TestCase):
 
     def test_bubble_sort(self):
         data = ['o', 'z', 'f']
-        self.assertListEqual(sorted(data), bubble_sort.bubble_sort(data))
+        self.assertListEqual(sorted(data), bubble_sort.sort(data))
 
     # Quick sorting tests
 

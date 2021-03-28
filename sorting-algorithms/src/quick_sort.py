@@ -41,7 +41,8 @@ def quick_sort(array, start, end):
 
 
 def sort(array):
-    return quick_sort(array, 0, len(array)-1)
+    list_to_sort = array.copy()
+    return quick_sort(list_to_sort, 0, len(array) - 1)
 
 
 if __name__ == '__main__':

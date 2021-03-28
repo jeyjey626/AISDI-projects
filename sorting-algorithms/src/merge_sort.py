@@ -41,7 +41,8 @@ def merge_sort(list_to_sort, start_idx,  end_idx):
 
 
 def sort(array):
-    return merge_sort(array, 0, len(array)-1)
+    list_to_sort = array.copy()
+    return merge_sort(list_to_sort, 0, len(array)-1)
 
 
 if __name__ == '__main__':

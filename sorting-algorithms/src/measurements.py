@@ -8,27 +8,34 @@ import quick_sort
 import counting_sort
 
 
-# todo add setup to install automatically with pip ?
+update_number = 0
 
 
 def plot(name, x, y, file_name):
     plt.plot(x, y)
     plt.title(name)
-    plt.ylabel('Czas pracy algorytmu [s]')
+    plt.ylabel('Średni czas pracy algorytmu [s]')
     plt.xlabel('Liczba sortowanych znaków')
-    plt.show()
-    plt.savefig('png-files/'+file_name+'.png')
-    #todo if file already exists add with time at the end?
+    plt.grid()
+    plt.savefig('png-files/' + file_name + '.png')
+    plt.clf()
+
+
+def update_user():
+    global update_number
+    update_number += 1
+    print('Ukończono ' + str(update_number) + ' z 4 pomiarów')
 
 
 def measure_and_plot(array, function, title, file_name):
     x = []
     y = []
-    for i in range(1000, len(array)-1, 1000):  # todo smaller steps?
+
+    for i in range(1000, len(array) - 1, 200):
         array_to_sort = array[0:i]
-        t = timeit.Timer(lambda: function.sort(array_to_sort))
         x.append(i)
-        y.append(t.timeit(10))  # todo increment repeat times after done testng
+        t = timeit.Timer(lambda: function.sort(array_to_sort))
+        y.append(t.timeit(1000)/1000)
     plot(title, x, y, file_name)
 
 
@@ -36,7 +43,13 @@ if __name__ == '__main__':
     f = open('lorem_ipsum.txt')
     data = [ch for ch in f.read()]
     f.close()
-    measure_and_plot(data, bubble_sort, 'Sortowanie bąbelkowe', 'bubble_sort')
     measure_and_plot(data, merge_sort, 'Sortowanie przez scalanie', 'merge_sort')
+    update_user()
     measure_and_plot(data, quick_sort, 'Sortowanie szybkie', 'quick_sort')
+    update_user()
+    measure_and_plot(data, bubble_sort, 'Sortowanie bąbelkowe', 'bubble_sort')
+    update_user()
     measure_and_plot(data, counting_sort, 'Sortowanie przez zliczanie', 'counting_sort')
+    update_user()
+
+    print('Pomiar zakończony, wykresy zapisane w folderze png-files')

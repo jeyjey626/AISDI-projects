@@ -37,6 +37,7 @@ def measure_and_plot(array, function, title, file_name):
         t = timeit.Timer(lambda: function.sort(array_to_sort))
         y.append(t.timeit(1000)/1000)
     plot(title, x, y, file_name)
+    update_user()
 
 
 if __name__ == '__main__':

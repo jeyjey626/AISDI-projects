@@ -45,12 +45,8 @@ if __name__ == '__main__':
     data = [ch for ch in f.read()]
     f.close()
     measure_and_plot(data, merge_sort, 'Sortowanie przez scalanie', 'merge_sort')
-    update_user()
     measure_and_plot(data, quick_sort, 'Sortowanie szybkie', 'quick_sort')
-    update_user()
     measure_and_plot(data, bubble_sort, 'Sortowanie bąbelkowe', 'bubble_sort')
-    update_user()
     measure_and_plot(data, counting_sort, 'Sortowanie przez zliczanie', 'counting_sort')
-    update_user()
 
     print('Pomiar zakończony, wykresy zapisane w folderze png-files')

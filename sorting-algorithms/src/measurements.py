@@ -31,11 +31,11 @@ def measure_and_plot(array, function, title, file_name):
     x = []
     y = []
 
-    for i in range(1000, len(array) - 1, 200):
+    for i in range(1000, len(array) - 1, 300):
         array_to_sort = array[0:i]
         x.append(i)
         t = timeit.Timer(lambda: function.sort(array_to_sort))
-        y.append(t.timeit(1000)/1000)
+        y.append(t.timeit(10)/10)
     plot(title, x, y, file_name)
     update_user()
 

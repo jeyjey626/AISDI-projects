@@ -31,11 +31,11 @@ def measure_and_plot(array, function, title, file_name):
     x = []
     y = []
 
-    for i in range(1000, len(array) - 1, 200):
+    for i in range(1000, len(array) - 1, 300):
         array_to_sort = array[0:i]
         x.append(i)
         t = timeit.Timer(lambda: function.sort(array_to_sort))
-        y.append(t.timeit(1000)/1000)
+        y.append(t.timeit(10)/10)
     plot(title, x, y, file_name)
     update_user()
 
@@ -45,12 +45,8 @@ if __name__ == '__main__':
     data = [ch for ch in f.read()]
     f.close()
     measure_and_plot(data, merge_sort, 'Sortowanie przez scalanie', 'merge_sort')
-    update_user()
     measure_and_plot(data, quick_sort, 'Sortowanie szybkie', 'quick_sort')
-    update_user()
     measure_and_plot(data, bubble_sort, 'Sortowanie bąbelkowe', 'bubble_sort')
-    update_user()
     measure_and_plot(data, counting_sort, 'Sortowanie przez zliczanie', 'counting_sort')
-    update_user()
 
     print('Pomiar zakończony, wykresy zapisane w folderze png-files')

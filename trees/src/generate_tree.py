@@ -28,7 +28,7 @@ def generate_tree(first_elem):
                 q.put([child_right, curr_node.right])
 
     tree = etree.ElementTree(root)
-    tree.write('AVL_Tree.xml', pretty_print=True)
+    tree.write('src/xml/AVL_Tree.xml', pretty_print=True)
 
 
 if __name__ == '__main__':

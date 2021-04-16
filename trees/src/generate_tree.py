@@ -1,6 +1,6 @@
 from lxml import etree
-import lxml.builder
-from AVL import test_avl_tree
+import numpy as np
+import AVL
 import queue
 
 
@@ -14,13 +14,16 @@ def generate_tree(first_elem):
     while not q.empty():
         parent, curr_node = q.get()
         if curr_node:
+            print("Curr node data: {}".format(curr_node.data))
             if curr_node.left is not None:
+                print("Curr left data: {}".format(curr_node.left.data))
                 child_left = etree.SubElement(parent, "left_child")
                 child_left.text = str(curr_node.left.data)
                 q.put([child_left, curr_node.left])
 
             if curr_node.right is not None:
-                child_right = etree.SubElement(root, "right_child")
+                print("Curr right data: {}".format(curr_node.right.data))
+                child_right = etree.SubElement(parent, "right_child")
                 child_right.text = str(curr_node.right.data)
                 q.put([child_right, curr_node.right])
 
@@ -29,5 +32,7 @@ def generate_tree(first_elem):
 
 
 if __name__ == '__main__':
-    root = test_avl_tree()
+    elements_to_insert = [i for i in range(10)]
+    avl = AVL.AVLTree()
+    root = AVL.create_tree(elements_to_insert)
     generate_tree(root)

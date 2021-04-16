@@ -1,4 +1,5 @@
 # AVL tree algorithm
+import numpy as np
 
 class AVLNode:
 
@@ -11,13 +12,13 @@ class AVLNode:
 
 class AVLTree(object):
 
-    def insert(self, root, key):
+    def insert(self, root, data):
         if not root:
-            return AVLNode(key)
-        elif key < root.data:
-            root.left = self.insert(root.left, key)
+            return AVLNode(data)
+        elif data < root.data:
+            root.left = self.insert(root.left, data)
         else:
-            root.right = self.insert(root.right, key)
+            root.right = self.insert(root.right, data)
 
         # Height update
         root.height = 1 + max(self.get_height(root.left), self.get_height(root.right))
@@ -26,21 +27,23 @@ class AVLTree(object):
         balance = self.check_balance(root)
 
         # Unbalanced -> RR
-        if balance < -1 and key > root.right.data:
+        if balance < -1 and data > root.right.data:
             return self.rotate_left(root)
 
         # Unbalanced -> LL
-        if balance > 1 and key < root.left.val:
+        if balance > 1 and data < root.left.data:
             return self.rotate_right(root)
 
         # Unbalanced -> RL
-        if balance < -1 and key < root.right.data:
-            root.right = self.rotate_right(root.right)
+        if balance < -1 and data < root.right.data:
+            if root.right.left:
+                root.right = self.rotate_right(root.right)
             return self.rotate_left(root)
 
         # Unbalanced -> LR
-        if balance > 1 and key > root.left.val:
-            root.left = self.rotate_left(root.left)
+        if balance > 1 and data > root.left.data:
+            if root.left.right:
+                root.left = self.rotate_left(root.left)
             return self.rotate_right(root)
         return root
 
@@ -121,13 +124,13 @@ class AVLTree(object):
             return self.rotate_right(root)
         return root
 
-    def pre_order(self, root):
+    def pre_order(self, root, list =[]):
         if not root:
             return
-        print(root.data, end=' ')
-
-        self.pre_order(root.left)
-        self.pre_order(root.right)
+        list.append(root.data)
+        self.pre_order(root.left, list)
+        self.pre_order(root.right, list)
+        return list
 
     def get_height(self, root):
         if not root:
@@ -170,19 +173,29 @@ class AVLTree(object):
         return y
 
 
-def test_avl_tree():
+def create_tree(elements_to_insert):
     avl = AVLTree()
     root = None
 
-    root = avl.insert(root, 10)
-    root = avl.insert(root, 20)
-    root = avl.insert(root, 30)
-    root = avl.insert(root, 40)
-    root = avl.insert(root, 50)
-    root = avl.insert(root, 25)
-    root = avl.delete(root, 25)
-    avl.pre_order(root)
+    for i in elements_to_insert:
+        root = avl.insert(root, i)
+    return root
+
+
+def search_tree(root, elements_to_search):
+    avl = AVLTree()
+    for i in elements_to_search:
+        avl.find_element(root, i)
+
+
+def delete_tree(root, elements_to_delete):
+    avl = AVLTree()
+    for i in elements_to_delete:
+        root = avl.delete(root, i)
+    return root
 
 
 if __name__ == '__main__':
-    test_avl_tree()
+    elements_to_insert = [np.random.randint(0, 100) for i in range(10)]
+    root = create_tree(elements_to_insert)
+    print(root.data)

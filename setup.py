@@ -5,5 +5,5 @@ setup(
     version='',
     author='J.Makulec, A.Kudzia',
     description='Projects for AISDI class',
-    requires=['matplotlib'],
+    requires=['matplotlib', 'lxml', 'numpy'],
 )

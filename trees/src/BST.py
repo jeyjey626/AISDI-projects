@@ -1,4 +1,7 @@
 # BST tree algorithm
+import generate_tree
+import numpy as np
+
 
 class BSTNode:
 
@@ -10,6 +13,8 @@ class BSTNode:
     def insert(self, data):
         if not self.data:
             return BSTNode(data)
+        elif self.data == data:
+            return self
         elif data < self.data:
             if self.left:
                 self.left.insert(data)
@@ -41,10 +46,12 @@ class BSTNode:
 
         # Deciding which branch has element to delete
         if data < self.data:
-            self.left = self.left.delete(data)
+            if self.left:
+                self.left = self.left.delete(data)
             return self
         elif data > self.data:
-            self.right = self.right.delete(data)
+            if self.right:
+                self.right = self.right.delete(data)
             return self
 
         # Deleted element is has one child empty
@@ -62,11 +69,30 @@ class BSTNode:
         self.right.delete(min_larger_node.data)
         return self
 
-    def pre_order(self):
-        if not self.data:
-            return
-        print(self.data, end=' ')
 
-        self.left.pre_order()
-        self.right.pre_order()
+def print_to_xml(name, tree):
+    generate_tree.generate_tree(name, tree)
 
+
+def create_tree(elem_to_create):
+    bst = BSTNode(elem_to_create[1])
+    for elem in elem_to_create:
+        bst.insert(elem)
+    return bst
+
+
+def search_tree(tree, elem_to_search):
+    for elem in elem_to_search:
+        tree.find_element(elem)
+
+
+def delete_tree(tree, elem_to_delete):
+    for elem in elem_to_delete:
+        tree.delete(elem)
+    return tree
+
+
+if __name__ == '__main__':
+    elements_to_insert = [np.random.randint(0, 100) for i in range(10)]
+    bst_tree = create_tree(elements_to_insert)
+    print_to_xml('xml/BST_Tree.xml', bst_tree)

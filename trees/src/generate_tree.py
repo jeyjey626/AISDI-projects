@@ -4,7 +4,7 @@ import AVL
 import queue
 
 
-def generate_tree(first_elem):
+def generate_tree(name, first_elem):
     root = etree.Element("root")
     root.text = str(first_elem.data)
     q = queue.Queue()
@@ -28,11 +28,11 @@ def generate_tree(first_elem):
                 q.put([child_right, curr_node.right])
 
     tree = etree.ElementTree(root)
-    tree.write('src/xml/AVL_Tree.xml', pretty_print=True)
+    tree.write(name, pretty_print=True)
 
 
 if __name__ == '__main__':
     elements_to_insert = [i for i in range(10)]
     avl = AVL.AVLTree()
     root = AVL.create_tree(elements_to_insert)
-    generate_tree(root)
+    generate_tree('xml/AVL_Tree.xml', root)

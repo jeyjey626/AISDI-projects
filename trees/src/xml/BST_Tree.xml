@@ -1,1 +1,14 @@
-<root>23<left_child>11</left_child><right_child>74<left_child>55<left_child>42<left_child>34</left_child></left_child></left_child><right_child>83<left_child>76</left_child><right_child>88</right_child></right_child></right_child></root>
+<root>23
+    <left_child>11</left_child>
+    <right_child>74
+        <left_child>55
+            <left_child>42
+                <left_child>34</left_child>
+            </left_child>
+        </left_child>
+        <right_child>83
+            <left_child>76</left_child>
+            <right_child>88</right_child>
+        </right_child>
+    </right_child>
+</root>

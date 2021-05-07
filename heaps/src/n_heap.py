@@ -47,6 +47,8 @@ class NHeap:
         self._go_up(self.curr_size()-1)
 
     def delete_min(self):
+        if self.curr_size() == 1:
+            return []
         self.heap_list[0], self.heap_list[self.curr_size()-1] = self.heap_list[self.curr_size()-1], self.heap_list[0]
         root = self.heap_list.pop()
         self._heapify(0, self.curr_size())
@@ -55,6 +57,14 @@ class NHeap:
     def heapify(self):
         for index in reversed(range(self._get_parent_index(self.curr_size() - 1) + 1)):
             self._heapify(index, self.curr_size())
+
+    def insert_elements(self, array):
+        for element in array:
+            self.insert(element)
+
+    def delete_elements(self, count):
+        for e in range(count):
+            self.delete_min()
 
 
 if __name__ == '__main__':

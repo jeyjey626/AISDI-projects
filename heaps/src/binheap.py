@@ -6,47 +6,30 @@ class BinaryHeap(Heap):
     def __init__(self):
         super().__init__()
 
-    def insert(self, value):
-        self.heapList.append(value)
-        self.currentSize += 1
-        self.heapify_up(self.currentSize - 1)
+    def _get_parent_index(self, child_index):
+        return (child_index - 1) // 2
 
-    def delete_min(self):
-        if len(self.heapList) == 0:
-            return "Empty heap"
+    def _heapify(self, index, size):
+        children = self.get_children(index)
+        if not children:
+            return
+        min_child_index = children.index(min(children))
+        # get actual index of min child
+        min_child_index = (2 * index) + (min_child_index + 1)
+        if self.heap_list[min_child_index] < self.heap_list[index]:
+            self.heap_list[index], self.heap_list[min_child_index] = self.heap_list[min_child_index], self.heap_list[index]
+            if min_child_index <= size // 2:
+                self._heapify(min_child_index, size)
 
-        root = self.heapList[0]
-        self.heapList[0] = self.heapList[self.currentSize - 1]
-        self.heapList.pop()
-        self.currentSize -= 1
-
-        self.heapify_down()
-
-        return root
-
-    def heapify_up(self, x):
-        while x // 2 > 0:
-            if self.heapList[x] < self.heapList[x // 2]:
-                self.heapList[x], self.heapList[x // 2] = self.heapList[x // 2], self.heapList[x]
-            x = x // 2
-
-    def heapify_down(self):
-        x = 0
-        while x * 2 <= self.currentSize:
-            min_child = self.min_child(x)
-            if self.heapList[x] > self.heapList[min_child]:
-                self.heapList[x], self.heapList[min_child] = self.heapList[min_child], self.heapList[x]
-
-            x = min_child
-
-    def min_child(self, x):
-        if x * 2 + 1 > self.currentSize - 1:
-            return x * 2
-        else:
-            if self.heapList[x * 2] < self.heapList[x * 2 + 1]:
-                return x * 2
+    def get_children(self, index):
+        children = []
+        for i in range(2):
+            child_index = (index * 2) + i + 1
+            if child_index < self.curr_size():
+                children.append(self.heap_list[child_index])
             else:
-                return x * 2 + 1
+                break
+        return children
 
 
 if __name__ == '__main__':
@@ -54,4 +37,4 @@ if __name__ == '__main__':
     for i in range(10):
         bin_heap.insert(i)
     print(bin_heap.delete_min())
-    print(bin_heap.heapList)
+    print(bin_heap.heap_list)

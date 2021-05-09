@@ -18,7 +18,7 @@ class NHeap:
         return (child_index - 1) // self.n
 
     def _heapify(self, index, size):
-        children = self._get_children(index)
+        children = self.get_children(index)
         if not children:
             return
         min_child_index = children.index(min(children))
@@ -29,9 +29,9 @@ class NHeap:
             if min_child_index <= size // self.n:
                 self._heapify(min_child_index, size)
 
-    def _get_children(self, index):
+    def get_children(self, index):
         children = []
-        for i in range(2):
+        for i in range(self.n):
             child_index = (index * self.n) + i + 1
             if child_index < self.curr_size():
                 children.append(self.heap_list[child_index])

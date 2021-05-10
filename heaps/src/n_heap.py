@@ -54,10 +54,6 @@ class NHeap:
         self._heapify(0, self.curr_size())
         return root
 
-    def heapify(self):
-        for index in reversed(range(self._get_parent_index(self.curr_size() - 1) + 1)):
-            self._heapify(index, self.curr_size())
-
     def insert_elements(self, array):
         for element in array:
             self.insert(element)
@@ -69,10 +65,17 @@ class NHeap:
 
 if __name__ == '__main__':
     bin_heap = NHeap(4)
-    for i in range(10):
-        bin_heap.insert(i)
+    elements = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    for elem in elements:
+        bin_heap.insert(elem)
+    print(bin_heap.heap_list)
     print(bin_heap.delete_min())
     print(bin_heap.heap_list)
+
+
+
+
+
 
 
 

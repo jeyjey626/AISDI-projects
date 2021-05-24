@@ -38,7 +38,7 @@ def measure_search(function, text):
     y = []
     list_of_words = re.sub(r'[^\w\s]', '',  text).split()  # removing punctuation and splitting words
 
-    for i in range(10, 50, 10):
+    for i in range(100, 1100, 100):
         print(i)
         x.append(i)
         words_to_search = list_of_words[:i]

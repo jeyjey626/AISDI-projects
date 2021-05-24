@@ -43,6 +43,7 @@ def find(string, text):
                 string_idx = table[string_idx]
     return list
 
+
 if __name__ == '__main__':
     string = ''
     text = 'ababa'

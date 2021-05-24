@@ -1,5 +1,5 @@
 d = 256
-q = 13
+q = 101
 
 
 def find(string, text):
@@ -8,8 +8,8 @@ def find(string, text):
     found_instances = []
     m = len(string)
     n = len(text)
-    p = 0
-    t = 0
+    p = 0  # hash value for pattern
+    t = 0  # has value for text
     h = 1
     i = 0
     j = 0

@@ -36,21 +36,24 @@ def search_words(function, text, words):
 def measure_search(function, text):
     x = []
     y = []
-    list_of_words = re.sub(r'[^\w\s]', '',  text).split()  # removing punctuation and splitting words
+    list_of_words = text.split()  # removing punctuation and splitting words
 
     for i in range(100, 1100, 100):
         print(i)
         x.append(i)
-        words_to_search = list_of_words[:i]
-        t = timeit.Timer(lambda: search_words(function, text, words_to_search))
-        y.append(t.timeit(1))
+        words_to_search = ' '.join(list_of_words[:i])
+        # words_to_search = text[0:i]
+        t = timeit.Timer(lambda: function.find(words_to_search, text))
+        y.append(t.timeit(10)/10)
     plot(x, y)
     update_user()
 
 
 if __name__ == '__main__':
     print('Rozpoczęto pomiary')
-    search_in = open('pan-tadeusz.txt', encoding='utf-8').read()
+    # search_in = open('pan-tadeusz.txt', encoding='utf-8').read()
+    search_in = re.sub(r'[^\w\s]', '',  open('pan-tadeusz.txt', encoding='utf-8').read())
+    search_in.replace('\n', ' ')
     measure_search(KMP_algorithm, search_in)
     measure_search(RK_algorithm, search_in)
     measure_search(naive_algorithm, search_in)

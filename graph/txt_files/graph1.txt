@@ -1,0 +1,9 @@
+2134
+0256
+1789
+1210
+ The shortest path from 0 to 0 for upper board is 
+    
+0   
+1   
+1210

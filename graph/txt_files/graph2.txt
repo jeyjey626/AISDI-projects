@@ -1,0 +1,7 @@
+123123123
+456045645
+789708978
+ The shortest path from 0 to 0 for upper board is 
+         
+   04    
+    0    
